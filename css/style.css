@@ -1,0 +1,988 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+:root {
+    --bg-color: #081b29;
+    --second-bg-color: #112e42;
+    --text-color: #ededed;
+    --main-color: #00abf0;
+}
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 9%;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    transition: .3s;
+}
+
+.header.sticky {
+    background: var(--bg-color);
+}
+
+.logo {
+    position: relative;
+    font-size: 2.5rem;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.navbar {
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.navbar a {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    font-weight: 500;
+    margin-left: 1.5rem;
+    transition: .3s;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: var(--main-color);
+}
+
+#menu-icon {
+    position: relative;
+    font-size: 2rem;
+    color: var(--text-color);
+    cursor: pointer;
+    display: none;
+}
+
+section {
+    min-height: 100vh;
+    padding: 10rem 9% 2rem;
+}
+
+.accueil {
+    display: flex;
+    align-items: center;
+    padding: 0 9%;
+    background: url('../images/homeb.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* effet paralax sur grand écran */
+}
+
+.accueil-content {
+    max-width: 60rem;
+    z-index: 99;
+}
+
+.accueil-content h1 {
+    position: relative;
+    display: inline-block;
+    font-size:3.6rem;
+    font-weight: 700;
+    line-height: 1.3;
+    font-size: clamp(2rem, 5vw, 3.6rem);
+}
+
+.accueil-content h1 span {
+    color: var(--text-color);
+}
+
+.accueil-content .text-animate {
+    position: relative;
+    width: 50rem;
+}
+
+.accueil-content .text-animate h3 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: transparent;
+    -webkit-text-stroke: .7px var(--main-color);
+    background-image: linear-gradient(var(--main-color), var(--main-color));
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-position: -50rem 0;
+    animation: accueilBgText 6s linear infinite;
+    animation-delay: 2s;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+}
+
+.accueil-content .text-animate h3::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;border-right: 2px solid var(--main-color);
+    z-index: -1;
+    animation: accueilCursorText 6s linear infinite;
+    animation-delay: 2s;
+}
+
+.accueil-content p {
+    position: relative;
+    font-size: 1.3rem;
+    margin: 2rem 0 4rem;
+}
+
+.btn-box {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 34.5rem;
+    height: 4rem;
+}
+
+.btn-box .btn {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 15rem;
+    height: 100%;
+    background: var(--main-color);
+    border: .2rem solid var(--main-color);
+    border-radius: .8rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    color: var(--bg-color);
+    z-index: 1;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.btn-box .btn:hover {
+    color: var(--main-color);
+}
+
+.btn-box .btn:nth-child(2) {
+    background: transparent;
+    color: var(--main-color);
+}
+
+.btn-box .btn:nth-child(2):hover {
+    color: var(--bg-color);
+}
+
+.btn-box .btn:nth-child(2)::before {
+    background: var(--main-color);
+}
+
+.btn-box .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--bg-color);
+    z-index: -1;
+    transition: .5s;
+}
+
+.btn-box .btn:hover::before {
+    width: 100%;
+}
+
+.accueil-sci {
+    position: absolute;
+    bottom: 4rem;
+    width: 170px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.accueil-sci a {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: .2rem solid var(--main-color);
+    border-radius: 50%;
+    font-size: 20px;
+    color: var(--main-color);
+    z-index: 1;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.accueil-sci a:hover {
+    color: var(--bg-color);
+}
+
+.accueil-sci a::before {
+    content:'';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--main-color);
+    z-index: -1;
+    transition: .5s;
+}
+
+.accueil-sci a:hover::before {
+    width: 100%;
+}
+
+.accueil-imgHover {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 42%;
+    height: 100%;
+    background: transparent;
+    transition: 3s;
+}
+
+.accueil-imgHover:hover {
+    background: var(--bg-color);
+    opacity: .8;
+}
+
+.accueil {
+    position: relative; /* nécessaire pour positionner le texte à l’intérieur */
+    min-height: 100vh;  /* garde la section sur toute la hauteur de l’écran */
+}
+
+.à-propos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    background: var(--bg-color);
+    padding-bottom: 4rem;
+}
+
+.heading {
+    position: relative;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+span {
+    color: var(--main-color);
+}
+
+.à-propos-img {
+    position: relative;
+    width: 25rem;
+    height: 25rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.à-propos-img img{
+    width: 90%;
+    border-radius: 50%;
+    border: .2rem solid var(--main-color);
+}
+
+.à-propos-img .circle-spin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0);
+    width: 95%;
+    height: 95%;
+    border-radius: 50%;
+    border-top: .2rem solid var(--second-bg-color);
+    border-bottom: .2rem solid var(--second-bg-color);
+    border-left: .2rem solid var(--main-color);
+    border-right: .2rem solid var(--main-color);
+    animation: à-proposSpinner 8s linear infinite;
+}
+
+.à-propos-content {
+    text-align: center;
+}
+
+.à-propos-content h3 {
+    position: relative;
+    display: inline-block;
+    font-size: 2rem;
+}
+
+.à-propos-content p {
+    position: relative;
+    font-size: 1.3rem;
+    margin: 2rem 0 3rem;
+}
+
+
+.btn-box.btns {
+    display: inline-block;
+    width: 15rem;
+}
+
+.btn-box.btns a::before {
+    background: var(--second-bg-color);
+}
+
+.à-propos {
+    position: relative; /* nécessaire pour positionner le texte à l’intérieur */
+    min-height: 100vh;  /* garde la section sur toute la hauteur de l’écran */
+}
+
+.page2-text {
+    position: absolute;
+    bottom: 20px;              /* distance depuis le bas */
+    left: 86%;                 /* point de référence au centre */
+    transform: translateX(100%); /* décale pour bien centrer */
+
+    background: #f2f2f2;       /* fond gris clair */
+    border: 2px solid #ccc;    /* encadré gris */
+    border-radius: 10px;       /* coins arrondis */
+    padding: 1rem 2rem;        /* espace intérieur */
+    text-align: right;        /* texte centré */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* ombre légère */
+}
+
+.page2-text h2 {
+    font-size: 1.3rem;
+    color: var(--main-color);  /* ta couleur principale */
+    margin: 0;
+}
+
+.services {
+    min-height: auto;
+    padding-bottom: 7rem;
+}
+
+.services h2 {
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.services-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.services-container .services-box {
+    flex: 1 1 300px; /* minimum 300px */
+    max-width: 400px; /* pas trop large sur desktop */
+    background: var(--second-bg-color);
+    padding: 3rem 2.3rem 4rem 2.3rem;
+    border-radius: 2rem;
+    text-align: center;
+    border: .2rem solid var(--bg-color);
+    transition: .5s ease;
+    position: relative;   /* nécessaire pour ::before */
+    overflow: hidden;     /* coupe le rideau */
+}
+
+/* Rideau jaune qui cache la carte au départ */
+.services-box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--bg-color);           /* couleur du rideau */
+    transform: scaleX(1);         /* couvre entièrement la carte */
+    transform-origin: right;      /* ouverture depuis la droite */
+    transition: transform 1s ease;
+    z-index: 2;
+
+}
+
+/* Quand la section est active : rideau se retire */
+.services.show-animate .services-box::before {
+    transform: scaleX(0);         /* rideau disparaît vers la gauche */
+    transition-delay: calc(.3s * var(--i)); /* cascade avec --i */
+}
+
+.services-container .services-box:hover {
+    position: relative;
+    display: inline-block;
+    border-color: var(--main-color);
+    transform: scale(1.02);
+} 
+
+.services-box i {
+    font-size: 7rem;
+    color: var(--main-color);
+    transform: scale(0.9); /* 90% de la taille d'origine */
+}
+
+.services-box h3 {
+    font-size: 1.7rem;
+    font-size: clamp(1.4rem, 2vw, 1.7rem);
+}
+
+.services-box p {
+    font-size: 1.2rem;
+    margin: 1rem 0 3rem;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+}
+
+.services {
+    position: relative; /* nécessaire pour positionner le texte à l’intérieur */
+    min-height: 100vh;  /* garde la section sur toute la hauteur de l’écran */
+}
+
+.portfolio {
+    min-height: auto;
+    padding-bottom: 7rem;
+}
+
+.portfolio h2 {
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.portfolio-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.portfolio-container .portfolio-box {
+    flex: 1 1 20rem;
+    background: var(--second-bg-color);
+    padding: 2rem;
+    border-radius: 2rem;
+    text-align: center;
+    transition: .5s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* image fixe */
+.portfolio-box img {
+    width: 100%;
+    border-radius: 1.5rem;
+    margin-bottom: 1rem;
+    transform: scale(1,1);
+    transition: none;
+}
+
+/* --- Rideau jaune --- */
+.portfolio-box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--bg-color);
+    transform: translateX(0);   /* cache l’image au départ */
+    transition: transform 1s ease-in-out;
+    z-index: 2;
+    pointer-events: none;
+    border-radius: 2rem;
+    top: -20%;
+    bottom: -20%;
+}
+
+/* --- Texte (apparaît en même temps que le rideau) --- */
+.portfolio-box .portfolio-layer {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 2rem;
+    background: linear-gradient(rgba(0,0,0,.1), rgba(0,0,0,.4));
+    opacity: 0; /* invisible au départ */
+    transition: opacity 1s ease-in-out;
+    z-index: 1;
+}
+
+/* 🔥 Quand la section portfolio devient active → tout en même temps */
+.portfolio.show-animate .portfolio-box::before {
+    transform: translateX(100%);
+    transition-delay: calc(.3s * var(--i)); /* cascade avec --i */  
+}
+
+.portfolio.show-animate .portfolio-layer {
+    opacity: 1;
+}
+
+/* --- Hover --- */
+.portfolio-container .portfolio-box:hover {
+    border-color: var(--main-color);
+    transform: scale(1.03);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.portfolio-box:hover img {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+/* Style de base : caché en bas */
+.portfolio-layer h4,
+.portfolio-layer p,
+.portfolio-layer a {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.5s ease;
+}
+
+/* Taille augmentée */
+.portfolio-layer h4 {
+    font-size: 2rem; /* plus grand */
+}
+
+.portfolio-layer p {
+    font-size: 1.2rem; /* plus grand */
+}
+
+.portfolio-layer a {
+    width: 3.5rem;  /* plus large */
+    height: 3.5rem; /* plus haut */
+    font-size: 2rem; /* icône plus grande */
+    background: var(--text-color); /* tu peux mettre une couleur de fond si besoin */
+    color: #000;      /* icône blanche */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+/* Quand on hover la carte */
+.portfolio-box:hover .portfolio-layer h4 {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s; /* titre en premier */
+}
+
+.portfolio-box:hover .portfolio-layer p {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s; /* texte après */
+}
+
+.portfolio-box:hover .portfolio-layer a {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s; /* icône en dernier */
+}
+
+
+
+.contact {
+    min-height: auto;
+    padding-bottom: 7rem;
+}
+
+.contact h2 {
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.contact form {
+    max-width: 70rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact form .input-box {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.contact form .input-box .input-field {
+    position: relative;
+    width: 49%;
+    margin: .8rem 0;
+}
+
+.contact form .input-box .input-field input,
+.contact form .textarea-field textarea {
+    width: 100%;
+    height: 100%;
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    color: var(--text-color);
+    background: transparent;
+    border-radius: .6rem;
+    border: .2rem solid var(--main-color);
+}
+
+.contact form .input-box .input-field input::placeholder,
+.contact form .textarea-field textarea::placeholder {
+    color: var(--text-color);
+}
+
+.contact form .focus {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--second-bg-color);
+    border-radius: .6rem;
+    z-index: -1;
+    transition : .5s;
+}
+
+.contact form .input-box .input-field input:focus ~.focus,
+.contact form .input-box .input-field input:valid ~.focus,
+.contact form .textarea-field textarea:focus ~.focus,
+.contact form .textarea-field textarea:valid ~.focus {
+    width: 100%;
+}
+
+.contact form .textarea-field {
+    position: relative;
+    margin: .8rem 0 2.7rem;
+    display: flex;
+}
+
+.contact form .textarea-field textarea {
+    resize: none;
+}
+
+.contact form .btn-box.btns .btn {
+    cursor: pointer;
+}
+
+a:focus, .btn:focus {
+  outline: 2px solid var(--main-color);
+  outline-offset: 4px;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: wrap;
+    padding: 2rem 9%;
+    background: var(--second-bg-color);
+}
+
+.footer-text,
+.footer-iconTop {
+    position: relative;
+    
+}
+
+.footer-text p {
+    font-size: 1.6rem;
+}
+
+.footer-iconTop a {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: .8rem;
+    background: var(--main-color);
+    border: .2rem solid var(--main-color);
+    border-radius: .6rem;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.footer-iconTop a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--second-bg-color);
+    z-index: -1;
+    transition: .5s;
+}
+
+.footer-iconTop a:hover::before {
+    width: 100%;
+}
+
+.footer-iconTop a i {
+    font-size: 2.4rem;
+    color: var(--bg-color);
+    transition: .5s;
+}
+
+.footer-iconTop a:hover i {
+    color: var(--main-color);
+}
+
+/* ANIMATION RELOAD AND SCROLL */
+.animate {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+    z-index: 98;
+}
+
+.animate.home-img {
+    width: 42%;
+}
+
+
+.logo .animate,
+.navbar .animate,
+#menu-icon .animate,
+.accueil.show-animate .animate {
+    animation: showRight 1s ease forwards;
+    animation-delay: calc(.3s * var(--i))
+}
+
+.animate.scroll {
+    transition: 1s ease;
+    transition-delay: calc(.3s / var(--i));
+    animation: none;
+}
+
+section:nth-child(odd) .animate.scroll,
+.footer .animate.scroll {
+    background: var(--bg-color)
+}
+
+.à-propos.show-animate .animate.scroll,
+.services.show-animate .animate.scroll,
+.portfolio.show-animate .animate.scroll,
+.contact.show-animate .animate.scroll,
+.footer.show-animate .animate.scroll  {
+    transition-delay: calc(.3s * var(--i));
+    width: 0;
+}
+
+
+
+/*BREAKPOINTS*/
+@media (max-width: 1200px) {
+    html {
+        font-size: 55%;
+    }
+}
+
+@media (max-width: 991px) {
+    .header {
+        padding: 2rem 4%;
+    }
+
+    section {
+        padding: 10rem 4% 2rem;
+        padding: clamp(6rem, 10vw, 10rem) 5% clamp(2rem, 5vw, 4rem);
+    }
+
+    .acueil {
+        padding: 0 4%;
+    }
+
+    .footer {
+        padding: 2rem 4%
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        background: var(--bg-color);
+    }
+
+    #menu-icon {
+        display: block;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: -100%;
+        width: 100%;
+        padding: 1rem 4%;
+        background: var(--main-color);
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+        z-index: 1;
+        transition: .25s ease;
+        transition-delay: .25s;
+    }
+
+    .navbar.active {
+        left: 0;
+        transition-delay: 0s;
+    }
+
+    .navbar .active-nav {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: var(--bg-color);
+        border-top: .1rem solid rgba(0, 0, 0, .2);
+        z-index: -1;
+        transition: .25s ease;
+        transition-delay: 0s;
+    }
+
+    .navbar.active .active-nav {
+        left: 0;
+        transition-delay: .25s;
+    }
+
+    .navbar a {
+        display: block;
+        font-size: 2rem;
+        margin: 3rem 0;
+        transform: translateX(-20rem);
+        transition: .25s ease;
+        transition-delay: 0s;
+    }
+
+    .navbar.active a {
+        transform: translateX(0);
+        transition-delay: .25s;
+    }
+
+    .acueil-imgHover {
+        pointer-events: none;
+        background: var(--bg-color);
+        opacity: .6;
+    }
+
+}
+
+@media (max-width: 520px) {
+    html {
+        font-size: 50%;
+    }
+
+    .acueil-content h1 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .acueil-sci {
+        width: 160px;
+    }
+
+    .acueil-sci a {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+@media (max-width: 462px) {
+    .accueil-content h1 {
+        font-size: 5.2rem;
+    }
+
+    .services {
+        padding: 10rem 4% 5rem 5%;
+    }
+
+    .contact form .input-box .input-field {
+        width: 100%;
+    }
+
+    .footer {
+        flex-direction: column-reverse;
+    }
+
+    .footer p {
+        margin-top: 2rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 371px) {
+    .accueil {
+        justify-content: center;
+        background-attachment: scroll; /* évite les bugs mobiles */
+    }
+
+    .accueil-content {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .accueil-content h1 {
+        font-size: 5rem;
+    }
+}
+
+
+/* KEYFRAMES ANIMATION */
+@keyframes accueilBgText {
+    0%,
+    10%,
+    100% {
+        background-position: -50rem 0;
+    }
+     65%,
+     85% {
+        background-position: 0 0;
+    }
+}
+
+@keyframes accueilCursorText {
+    0%,
+    10%,
+    100% {
+        width: 0;
+    }
+     65%,
+     78%,
+     85% {
+        width: 100%;
+        opacity: 1;
+    }
+
+    75%,
+    81% {
+        opacity: 0;
+    }
+}
+
+@keyframes à-proposSpinner {
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg); 
+    } 
+}
+
+@keyframes showRight {
+    100% {
+        width: 0;
+    }
+}
